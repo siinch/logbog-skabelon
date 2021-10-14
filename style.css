@@ -1,12 +1,13 @@
-/* Navigation bar CSS */
-body {
+  body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+
+  /* Navigation bar CSS */
   .topnav {
     overflow: hidden;
     background-color: #333;
+    margin: 0;
   }
   
   .topnav a {
@@ -55,10 +56,106 @@ body {
     }
   }
 
+  /* Banner CSS */
+  .banner {
+    margin: 0;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    background-color: #333;
+  }
+
+  /* Content CSS */
+  .content {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+    padding: 2%;
+    text-align: center;
+    background-image: url('images/banner.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: white;
+    text-shadow:
+    -1px -1px 1px #000,
+    1px -1px 2px #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000; 
+  }
+
+  #informatik {
+    background-image:  url('images/informatik.jpg');
+  }
+
+  #matematik {
+    background-image:  url('images/matematik.jpg');
+  }
+
+  #engelsk {
+    background-image:  url('images/engelsk.jpg');
+  }
+
+  #so {
+    background-image:  url('images/so.jpg');
+  }
+
+  #dotdotdot {
+    background-image:  url('images/dotdotdot.jpg');
+  }
+
+  #dansk {
+    background-image:  url('images/dansk.jpg');
+  }
+
+  .content .element {
+    max-width: 49%;
+    margin: 0 auto;
+    text-align:center; 
+  }
+
+  .content .element p {
+    text-align: left;
+  }
+  
+  .content .element h2 {
+    text-align: left;
+  }
+
+ .content .left {
+    float: left;
+  }
+
+  .content .right {
+    float: right;
+  }
+
+  @media screen and (max-width: 600px) {
+    .content {
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+
+    .content .element {
+      float: none;
+      max-width: 80%;
+    } 
+  }
+
+  #profile-picture {
+    max-width: 50%;
+  }
+
   /* Accordion CSS */
   .accordion {
-    background-color: #eee;
-    color: #444;
+    background-color: transparent;
+    color: rgb(253, 253, 253);
+    text-shadow:
+    -1px -1px 1px #000,
+    1px -1px 1px #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000; 
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -69,13 +166,13 @@ body {
     transition: 0.4s;
   }
   
-  .active, .accordion:hover {
-    background-color: #ccc;
+  .accordion:hover {
+  border: solid 1px rgb(119, 119, 119);
   }
   
   .panel {
     padding: 0 18px;
-    background-color: white;
+    background-color: transparent;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
