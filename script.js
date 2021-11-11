@@ -25,7 +25,7 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-let myName = "Simon";
+let myName = "Kaj Børge";
 let firstlink = document
 .getElementsByTagName("a")[0];
 firstlink.innerHTML = myName;
