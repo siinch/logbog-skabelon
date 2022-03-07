@@ -1,7 +1,7 @@
-let owner = "Kaj Børge";
+let profileName = "Kaj Børge";
 // Set title
 document.getElementsByTagName("title")[0]
-.innerHTML = owner +"s Portfolio";
+.innerHTML = profileName +"s Portfolio";
 
 // Navigation bar Javascript
 // find the topnav object
@@ -9,11 +9,10 @@ let topnav = document.getElementById("topnav");
 
 // define the tabs
 let tabs = [
-  {name: owner, href: "index.html", class: "home"},
+  {name: profileName, href: "index.html", class: "home"},
   {name: "Projects", href: "projects.html"},
   {name: "Notes", href: "notes.html"}
 ];
-
 
 // create the tabs
 for (let tab of tabs) {
@@ -34,9 +33,28 @@ dropDownButton.innerHTML = "<i class='fa fa-bars'></i>";
 topnav.appendChild(dropDownButton);
 
 function collapseTopNav() {
-    if (topnav.className === "topnav") {
-      topnav.className += " responsive";
+    if (!topnav.classList.contains("responsive")) {
+      topnav.classList.add("responsive");
     } else {
-      topnav.className = "topnav";
+      topnav.classList.remove("responsive");
     }
   }
+
+  // When the user scrolls the page, execute myFunction
+window.onscroll = followTopNav;
+
+// Get the offset position of the navbar
+var sticky = topnav.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function followTopNav() {
+  if (window.pageYOffset >= sticky) {
+    topnav.classList.add("sticky")
+  } else {
+    topnav.classList.remove("sticky");
+  }
+} 
+
+  // set the name
+  document.getElementById("profile-name")
+  .innerHTML = profileName;

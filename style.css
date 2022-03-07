@@ -1,12 +1,22 @@
+  
   body {
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff4d6;
+  }
+
+  /* header */
+  .header {
+    background-image: url(images/header.png);
+    height: 35vh;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   /* Navigation bar CSS */
   .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: #181213;
     margin: 0;
   }
   
@@ -21,13 +31,8 @@
   }
   
   .topnav a:hover {
-    background-color: #ddd;
+    background-color: #ffffe1;
     color: black;
-  }
-
-  .topnav a.home {
-    background-color: #04AA6D;
-    color: white;
   }
   
   .topnav .icon {
@@ -40,10 +45,9 @@
       float: right;
       display: block;
     }
-  }
   
-  @media screen and (max-width: 600px) {
     .topnav.responsive {position: relative;}
+    .topnav.responsive.sticky {position: fixed;}
     .topnav.responsive .icon {
       position: absolute;
       right: 0;
@@ -55,6 +59,18 @@
       text-align: left;
     }
   }
+
+  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
 
   /* content */
   * {
@@ -71,17 +87,48 @@
     width: 30%;
     height: auto;
   }
+
+  #profile-name {
+    font-size: 50px;
+  }
+
+  /* about video */ 
+  #about-video {
+    position: relative;
+    overflow: hidden;
+    width: 50%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  }
+  
+  /* Then style the iframe to fit in the container div with full height and width */
+  .responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    z-index: -10;
+  }
   
   /* Float four columns side by side */
-  .column {
+  .column{
     float: left;
+    padding: 10px;
+  }
+
+  .p25{
     width: 25%;
-    padding: 0 10px;
+  }
+
+  .p100 {
+    width: 100;
   }
   
   /* Remove extra left and right margins, due to padding */
   .row {
-    margin: 5px;
+    margin: 0px;
   }
   
   /* Clear floats after the columns */
@@ -98,11 +145,6 @@
       padding: 1vh 1vw;
     }
 
-    #profile-picture {
-      width: 90%;
-      height: auto;
-    }
-
     .column {
       width: 100%;
       display: block;
@@ -115,5 +157,10 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
+  }
+
+  .about {
+    margin: 10px;
+    font-size: 25px;
   }
