@@ -1,10 +1,40 @@
+// Set title
+document.getElementsByTagName("title")[0]
+.innerHTML = "My Portfolio";
+
 // Navigation bar Javascript
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
+// find the topnav object
+let topnav = document.getElementById("topnav");
+
+// define the tabs
+let tabs = [
+  {name: "Home", href: "index.html"},
+  {name: "Projects", href: "projects.html"},
+  {name: "Notes", href: "notes.html"}
+];
+
+
+// create the tabs
+for (let tab of tabs) {
+  let newtab = document.createElement("a");
+  newtab.innerHTML = tab.name;
+  newtab.href = tab.href; 
+  topnav.appendChild(newtab);
+}
+
+// add responsiveness to the topnav
+let dropDownButton = document.createElement("a");
+href="javascript:void(0);"
+dropDownButton.className += " icon";
+dropDownButton.onclick = collapseTopNav;
+dropDownButton.innerHTML = "<i class='fa fa-bars'></i>";
+topnav.appendChild(dropDownButton);
+
+function collapseTopNav() {
+    if (topnav.className === "topnav") {
+      topnav.className += " responsive";
     } else {
-      x.className = "topnav";
+      topnav.className = "topnav";
     }
   }
 
@@ -24,12 +54,3 @@ for (i = 0; i < acc.length; i++) {
     } 
   });
 }
-
-let myName = "Kaj Børge";
-let firstlink = document
-.getElementsByTagName("a")[0];
-firstlink.innerHTML = myName;
-
-let title = document
-.getElementsByTagName("title")[0];
-title.innerHTML = myName + "s Logbog";
