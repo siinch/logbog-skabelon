@@ -2,7 +2,7 @@
 <html>
     <head>
         <!-- Skift navn i script.js-->
-        <title>Title</title>
+        <title>John Does Portfolio</title>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,30 +15,64 @@
 
         <!-- Navigation bar -->
         <!-- Kan ændres i script.js -->
-        <div class="topnav" id="topnav"></div>
+        <div class="topnav" id="topnav">
+            <a href="#top">John Doe</a>
+            <a href="#projects">Projects</a>
+            <a href="#notes">Notes</a>
+        </div>
 
         <!-- content -->
-        <div class="main-section">
+        <div class="main-content">
             
-            <!-- Byt dit billedet ud med dit eget profilbillede -->
             <img id="profile-picture" src="images/profile.jpg">
             
-            <p id="profile-name">Profile Name</p>
+            <h1>John Doe</h1>
 
             <div class="card about">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, ea saepe tempora sint rem pariatur amet quos labore velit eveniet necessitatibus culpa neque dicta ratione laudantium praesentium, voluptas dolor? Ea?</p>
             </div>
 
-            <!--
-            <div id="about-video">
-                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-            </div>
-            -->
+            <h1 id="projects">Projects</h1>
+
+            <div class="row">
+                <div class="column p33">
+                    <div class="card">
+                    <h3>Website</h3>
+                    <a href="projects/website/index.html">
+                        <img src="images/website.png">
+                    </a>
+                    <p>Here is a website I made. Click the icon and check it out.</p>
+                    </div>
+                </div>
+                
+                <div class="column p33">
+                    <div class="card">
+                    <h3>Game</h3>
+                    <a href="projects/game/index.html">
+                        <img src="images/game.png">
+                    </a>
+                    <p>Here is a game I made. Click the icon and check it out.</p>
+                    </div>
+                </div>
+                
+                <div class="column p33">
+                    <div class="card">
+                    <h3>Web App</h3>
+                    <a href="projects/webapp/index.html">
+                        <img src="images/webapp.png">
+                    </a>
+                    <p>Here is a web app I made. Click the icon and check it out.</p>
+                    </div>
+                </div>
+            </div><!-- project row end  -->
+
+            
+            <h1 id="notes">Notes</h1>
 
             <div class="row">
                 <div class="column p25">
                     <div class="card">
-                    <h3>Card 1</h3>
+                    <h3>HTML</h3>
                     <p>Some text</p>
                     <p>Some text</p>
                     </div>
@@ -46,7 +80,7 @@
                 
                 <div class="column p25">
                     <div class="card">
-                    <h3>Card 2</h3>
+                    <h3>CSS</h3>
                     <p>Some text</p>
                     <p>Some text</p>
                     </div>
@@ -54,21 +88,21 @@
                 
                 <div class="column p25">
                     <div class="card">
-                    <h3>Card 3</h3>
+                    <h3>JS</h3>
                     <p>Some text</p>
                     <p>Some text</p>
                     </div>
                 </div>
-                
+
                 <div class="column p25">
                     <div class="card">
-                    <h3>Card 4</h3>
+                    <h3>SQL</h3>
                     <p>Some text</p>
                     <p>Some text</p>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div><!-- first notes row end  -->
+        </div><!-- main-section end-->
 
         <script src="script.js"></script>
     </body>
