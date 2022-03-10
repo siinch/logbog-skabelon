@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-template",
+  "version": "1.0.0",
+  "description": "portfolio template for IT students with projects and exercises in HTML, CSS and Javascript.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siinch/logbog-skabelon.git"
+  },
+  "author": "siinch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siinch/logbog-skabelon/issues"
+  },
+  "homepage": "https://github.com/siinch/logbog-skabelon#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
