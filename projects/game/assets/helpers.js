@@ -6,9 +6,9 @@ const context = canvas.getContext("2d");
 
 // ideal screen dimensions 1920 x 1080
 let canvasScale = window.innerWidth / 1920;
+canvas.width = 1920 * canvasScale;
+canvas.height = 1080 * canvasScale;
 context.scale(canvasScale, canvasScale)
-canvas.width = 1920;
-canvas.height = 1080;
 
 // make variables for calculating delta time
 let timeOfLastFrame = new Date().getTime();
