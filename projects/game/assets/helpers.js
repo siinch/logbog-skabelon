@@ -5,6 +5,8 @@ const canvas = document.body.appendChild(
 const context = canvas.getContext("2d");
 
 // ideal screen dimensions 1920 x 1080
+let canvasScale = window.innerWidth / 1920;
+context.scale(canvasScale, canvasScale)
 canvas.width = 1920;
 canvas.height = 1080;
 
