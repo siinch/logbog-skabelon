@@ -241,6 +241,9 @@ function update() {
         );
     }
 
+    context.clearRect(canvas.width, 0, 5000, 5000);
+    context.clearRect(0, canvas.height, 5000, 5000);
+
     // update timeSinceLastFrame and draw next frame
     timeOfCurrentFrame = new Date().getTime();
     timeSinceLastFrame = timeOfCurrentFrame - timeOfLastFrame;
