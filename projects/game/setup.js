@@ -1,9 +1,10 @@
  //game variables
 const gameOverSound = new Audio("assets/sounds/gameover.mp3");
+      gameOverSound.volume = 0.005;
 const music = new Audio("assets/sounds/music.mp3");
       music.loop = true;
-      music.volume = 0.5;
-const debugModeIsOn = true;
+      music.volume = 0;
+const debugModeIsOn = false;
 const startKey = "s";
 const restartKey = "r";
 const hitboxColor = "#00FF02";
@@ -21,6 +22,7 @@ const birdBeginningYAccelleration = 0.7;
 const birdXPosition = 250;
 const birdHitboxRadius = 30;
 const birdFlapSound = new Audio("assets/sounds/flap.wav");
+      birdFlapSound.volume = 0.005;
 const birdFlapForce = -12;
 const birdFlapKey = " ";
 let birdYSpeed = birdStartYSpeed;
@@ -72,6 +74,7 @@ let fireballs = [];
 
 // coin variables
 const coinSound = new Audio("assets/sounds/coin.wav");
+      coinSound.volume = 0.005;
 const coinImage = scoreImage;
 const coinHitboxRadius = 30;
 const coinXSpeed = -5;
