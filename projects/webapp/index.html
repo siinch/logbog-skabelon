@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Kanban App</title>
+        <title>Kanban Board</title>
     </head>
     <body>
         <header>
-            <h1>Kanban App</h1>
+            <h1>Kanban Board</h1>
         </header>
-        <article>
-            <h2>To-Do</h2>
-        </article>
-        <article>
-            <h2>Do First</h2>
-        </article>
-        <article>
-            <h2>Doing</h2>
-        </article>
-        <article>
-            <h2>Done</h2>
-        </article>
+        <section id="tasks">
+            <article id="backlog">
+                <h2>Backlog</h2>
+                <button>+</button>
+                <div class="task">
+                    <h3>Item Title</h3>
+                    <button>&lt</button>
+                    <button>&gt</button>
+                    <button>-</button>
+                </div>
+            </article>
+            <article id="to-do">
+                <h2>To-Do</h2>
+            </article>
+            <article id="doing">
+                <h2>Doing</h2>
+            </article>
+            <article id="done">
+                <h2>Done</h2>
+            </article>
+        </section>
         <footer>
         </footer>
+
+        <script src="script.js"></script>
     </body>
 </html>
