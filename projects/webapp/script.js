@@ -11,6 +11,7 @@ for (let task of tasks) {
 
     // create task component
     let taskComponent = document.createElement("div");
+    taskComponent.classList.add("task");
 
     // add title
     let title = document.createElement("h3");

@@ -1,0 +1,11 @@
+#tasks article {
+    background-color: darkblue;
+    padding: 10px;
+    margin: 10px;
+}
+
+#tasks .task {
+    background-color: cornflowerblue;
+    padding: 10px;
+    margin: 10px;
+}
