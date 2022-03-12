@@ -10,20 +10,34 @@ for (let task of tasks) {
     let parent = document.getElementById(task.status);
 
     // create task component
-    let taskComponent = createTaskComponent(task);
+    let taskComponent = createTaskComponent(parent, task);
 
     // append task component
     parent.appendChild(taskComponent);
 }
 
+// add functionality to the addTaskButton
+let addTaskButton = document.getElementById("add-task-button");
+addTaskButton.addEventListener("click", function() {
+    if(!confirm("Add new task?")) 
+        return;
+    
+    let parent = document.getElementById("backlog");
+    let task = {title: prompt("Title of new task:")};
+    let taskComponent = createTaskComponent(parent, task);
+    backlog.appendChild(taskComponent);
+});
+
 
 function removeTaskComponent(parent, taskComponent) {
-    if(confirm("Are you sure you wish to remove this task?")) 
-        parent.removeChild(taskComponent);
+    if(!confirm("Are you sure you wish to remove this task?"))
+        return;
+    
+    parent.removeChild(taskComponent)
 
 }
 
-function createTaskComponent (task) {
+function createTaskComponent (parent, task) {
     let taskComponent = document.createElement("div");
     taskComponent.classList.add("task");
 
@@ -35,7 +49,9 @@ function createTaskComponent (task) {
     // add remove button
     let remove = document.createElement("button");
     remove.innerHTML = "-";
-    remove.onclick = function () {removeTaskComponent(parent, taskComponent)};
+    remove.addEventListener("click", function () {
+        removeTaskComponent(parent, taskComponent)
+    });
     taskComponent.appendChild(remove);
 
     // add shiftLeft button
