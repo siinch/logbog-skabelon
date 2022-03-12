@@ -10,6 +10,20 @@ for (let task of tasks) {
     let parent = document.getElementById(task.status);
 
     // create task component
+    let taskComponent = createTaskComponent(task);
+
+    // append task component
+    parent.appendChild(taskComponent);
+}
+
+
+function removeTaskComponent(parent, taskComponent) {
+    if(confirm("Are you sure you wish to remove this task?")) 
+        parent.removeChild(taskComponent);
+
+}
+
+function createTaskComponent (task) {
     let taskComponent = document.createElement("div");
     taskComponent.classList.add("task");
 
@@ -34,13 +48,5 @@ for (let task of tasks) {
     shiftRight.innerHTML = "&gt";
     taskComponent.appendChild(shiftRight);
 
-    // append task component
-    parent.appendChild(taskComponent);
-}
-
-
-function removeTaskComponent(parent, taskComponent) {
-    if(confirm("Are you sure you wish to remove this task?"))
-        parent.removeChild(taskComponent);
-
+    return taskComponent;
 }
