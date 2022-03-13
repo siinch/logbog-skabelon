@@ -2,6 +2,9 @@
     background-color: darkblue;
     padding: 10px;
     margin: 10px;
+    float: left;
+    min-width: 300px;
+    width: 20%;
 }
 
 #tasks .task {
