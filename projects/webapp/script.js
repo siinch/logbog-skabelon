@@ -1,5 +1,4 @@
-
-let isTesting = true;
+let isTesting = false;
 let state = {
     backlog: 0,
     to_do: 1,
@@ -7,16 +6,19 @@ let state = {
     done: 3
 }
 
-let tasks  = [];
+let tasks = [];
 
 if(isTesting)
 for(let i = 0; i < 4; i++)
     tasks.push({title: "Task #" + i, state: Math.floor(Math.random()*3)});
+
 updateTasks();
 
 // add functionality to the addTaskButton
 let addTaskButton = document.getElementById("add-task-button");
-addTaskButton.addEventListener("click", function() {
+addTaskButton.addEventListener("click", addTaskButtonHandler);
+
+async function addTaskButtonHandler() {
     
     let task = {
         title: prompt("Title of new task:"),
@@ -26,13 +28,25 @@ addTaskButton.addEventListener("click", function() {
     if(task.title == "" || task.title == null)
         return;
     
-    postTask(task);
+    let response = await postTask(task);
+
+    if(!response.ok) {
+        alert (response.status + ": " + response.statusText);
+        return;
+    }
+
+    let data = await response.json();
+    alert(JSON.stringify(data))
     tasks.push(task);
     updateTasks();
 
-});
+}
 
-function updateTasks() {
+async function updateTasks() {
+
+    let response = await getTasks();
+    let data = await response.json();
+    tasks = data.tasks;
 
     // Remove all old taskComponents
     let taskComponents = document.getElementsByClassName("task");
@@ -69,15 +83,15 @@ function createTaskComponent (task) {
     taskComponent.appendChild(title);
 
     // add remove button
-    let remove = document.createElement("button");
-    remove.innerHTML = "-";
-    remove.addEventListener("click", function () {
+    let removeButton = document.createElement("button");
+    removeButton.innerHTML = "-";
+    removeButton.addEventListener("click", function () {
         if(!confirm("Are you sure you wish to remove this task?"))
             return;
         tasks = tasks.remove(task);
         updateTasks();
     });
-    taskComponent.appendChild(remove);
+    taskComponent.appendChild(removeButton);
 
     // add shiftLeft button
     let shiftLeft = document.createElement("button");

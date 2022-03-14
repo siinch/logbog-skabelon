@@ -1,3 +1,8 @@
+async function getTasks() {
+    let url = "/tasks";
+    return response = await fetch(url);
+}
+
 async function postTask(task) {
 
     let url = "/task";
@@ -6,7 +11,5 @@ async function postTask(task) {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(task)
     }
-    let response = await fetch(url, request);
-    let data = await response.json();
-    alert(response.status, JSON.stringify(data));
+    return response = await fetch(url, request);
 }
