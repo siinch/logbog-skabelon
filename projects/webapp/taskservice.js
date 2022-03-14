@@ -14,6 +14,17 @@ async function postTask(task) {
     return response = await fetch(url, request);
 }
 
+async function updateTask(task) {
+
+    let url = "/task";
+    let request = {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(task)
+    }
+    return response = await fetch(url, request);
+}
+
 async function deleteTask(task) {
 
     let url = "/task";

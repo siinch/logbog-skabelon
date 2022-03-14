@@ -12,7 +12,7 @@ if(isTesting)
 for(let i = 0; i < 4; i++)
     tasks.push({title: "Task #" + i, state: Math.floor(Math.random()*3)});
 
-updateTasks();
+reloadTasks();
 
 // add functionality to the addTaskButton
 let addTaskButton = document.getElementById("add-task-button");
@@ -38,11 +38,11 @@ async function addTaskButtonHandler() {
     let data = await response.json();
     alert(JSON.stringify(data))
     tasks.push(task);
-    updateTasks();
+    reloadTasks();
 
 }
 
-async function updateTasks() {
+async function reloadTasks() {
 
     let response = await getTasks();
     let data = await response.json();
@@ -89,7 +89,7 @@ function createTaskComponent (task) {
         if(!confirm("Are you sure you wish to remove this task?"))
             return;
         await deleteTask(task);
-        updateTasks();
+        reloadTasks();
     });
     taskComponent.appendChild(removeButton);
 
@@ -97,9 +97,10 @@ function createTaskComponent (task) {
     let shiftLeft = document.createElement("button");
     shiftLeft.innerHTML = "&lt";
     if(task.state != state.backlog)
-        shiftLeft.addEventListener("click", function() {
+        shiftLeft.addEventListener("click", async function() {
             task.state--;
-            updateTasks();
+            await updateTask(task);
+            reloadTasks();
         });
     taskComponent.appendChild(shiftLeft);
 
@@ -107,9 +108,10 @@ function createTaskComponent (task) {
     let shiftRight = document.createElement("button");
     shiftRight.innerHTML = "&gt";
     if(task.state < Object.keys(state).length-1)
-    shiftRight.addEventListener("click", function() {
+    shiftRight.addEventListener("click", async function() {
         task.state++;
-        updateTasks();
+        await updateTask(task);
+        reloadTasks();
     });
     taskComponent.appendChild(shiftRight);
 

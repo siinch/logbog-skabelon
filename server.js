@@ -16,7 +16,7 @@ server.get("/", async (request, response) => {
 });
 
 server.get("/tasks", async (request, response) => {
-  console.log("Getting tasks...");
+  console.log("Getting tasks:" + JSON.stringify(tasks));
   response.json({tasks: tasks});
 }); 
 
@@ -25,7 +25,19 @@ server.post("/task", async (request, response) => {
   console.log("Inserting task:", JSON.stringify(task));
   tasks.push(task);
   response.json(request.body);
-}); 
+});
+
+server.put("/task", async (request, response) => {
+  let task = request.body;
+  console.log("Updating task:", JSON.stringify(task));
+  for(let someTask of tasks)
+    if(someTask.title == task.title) {
+      someTask = task;
+      console.log(someTask, task)
+      console.log(JSON.stringify(tasks));
+    }
+  response.json(request.body);
+});
 
 server.delete("/task", async (request, response) => {
   let task = request.body;
