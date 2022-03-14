@@ -27,5 +27,12 @@ server.post("/task", async (request, response) => {
   response.json(request.body);
 }); 
 
+server.delete("/task", async (request, response) => {
+  let task = request.body;
+  console.log("Deleting task:", JSON.stringify(task));
+  tasks = tasks.filter(someTask => someTask.title != task.title);
+  response.json(request.body);
+}); 
+
 // start server
 server.listen(port, () => console.log("Listening on port " + port));

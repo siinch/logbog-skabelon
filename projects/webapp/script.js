@@ -85,10 +85,10 @@ function createTaskComponent (task) {
     // add remove button
     let removeButton = document.createElement("button");
     removeButton.innerHTML = "-";
-    removeButton.addEventListener("click", function () {
+    removeButton.addEventListener("click", async function () {
         if(!confirm("Are you sure you wish to remove this task?"))
             return;
-        tasks = tasks.remove(task);
+        await deleteTask(task);
         updateTasks();
     });
     taskComponent.appendChild(removeButton);
