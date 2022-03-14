@@ -31,11 +31,8 @@ server.put("/task", async (request, response) => {
   let task = request.body;
   console.log("Updating task:", JSON.stringify(task));
   for(let someTask of tasks)
-    if(someTask.title == task.title) {
-      someTask = task;
-      console.log(someTask, task)
-      console.log(JSON.stringify(tasks));
-    }
+    if(someTask.title == task.title)
+      someTask.state = task.state;
   response.json(request.body);
 });
 
