@@ -39,7 +39,18 @@ async function addTaskButtonHandler() {
     alert(JSON.stringify(data))
     tasks.push(task);
     reloadTasks();
+}
 
+// add functionality to the reloadTasksButton
+let reloadTasksButton = document.getElementById("reload-tasks-button");
+reloadTasksButton.addEventListener("click", reloadTasksButtonHandler);
+
+async function reloadTasksButtonHandler() {
+    
+    let response = await getTasks();
+    let data = await response.json();
+    tasks = data.tasks;
+    reloadTasks();
 }
 
 async function reloadTasks() {
