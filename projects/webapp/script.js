@@ -23,10 +23,13 @@ addTaskButton.addEventListener("click", function() {
         state: state.backlog 
     }
 
-    if(task.title != "" && task.title != null)
-        tasks.push(task);
-
+    if(task.title == "" || task.title == null)
+        return;
+    
+    postTask(task);
+    tasks.push(task);
     updateTasks();
+
 });
 
 function updateTasks() {
@@ -79,11 +82,11 @@ function createTaskComponent (task) {
     // add shiftLeft button
     let shiftLeft = document.createElement("button");
     shiftLeft.innerHTML = "&lt";
-    if(task.state != 0)
-    shiftLeft.addEventListener("click", function() {
-        task.state--;
-        updateTasks();
-    });
+    if(task.state != state.backlog)
+        shiftLeft.addEventListener("click", function() {
+            task.state--;
+            updateTasks();
+        });
     taskComponent.appendChild(shiftLeft);
 
     // add shiftRight button
