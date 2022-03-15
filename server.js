@@ -1,13 +1,20 @@
 // import the neccessary libraries
 const express = require("express");
-const server = express();
-const port = 3000;
+const mongoose = require("mongoose");
 
 // configure express server
+const port = 3000;
+const server = express();
 server.use(express.static("./"));
 server.use(express.json());
 
-let tasks = [];
+// configure the database model
+const databaseConnectionString = "mongodb://localhost:27017/webapp";
+mongoose.connect(databaseConnectionString);
+const Task = mongoose.model("Task", new mongoose.Schema({
+  title: String,
+  state: Number
+}));
 
 // send the root index.html
 server.get("/", async (request, response) => {
@@ -16,30 +23,28 @@ server.get("/", async (request, response) => {
 });
 
 server.get("/tasks", async (request, response) => {
-  console.log("Getting tasks:" + JSON.stringify(tasks));
-  response.json({tasks: tasks});
+  console.log("Getting tasks:");
+  response.json({tasks: await Task.find()});
 }); 
 
 server.post("/task", async (request, response) => {
-  let task = request.body;
+  let task = new Task(request.body);
   console.log("Inserting task:", JSON.stringify(task));
-  tasks.push(task);
+  await task.save();
   response.json(request.body);
 });
 
 server.put("/task", async (request, response) => {
-  let task = request.body;
+  let task = new Task(request.body);
   console.log("Updating task:", JSON.stringify(task));
-  for(let someTask of tasks)
-    if(someTask.title == task.title)
-      someTask.state = task.state;
+  await Task.findByIdAndUpdate(task._id, task);
   response.json(request.body);
 });
 
 server.delete("/task", async (request, response) => {
-  let task = request.body;
+  let task = new Task(request.body);
   console.log("Deleting task:", JSON.stringify(task));
-  tasks = tasks.filter(someTask => someTask.title != task.title);
+  await Task.findByIdAndDelete(task._id);
   response.json(request.body);
 }); 
 
