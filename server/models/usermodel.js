@@ -8,5 +8,5 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", taskSchema);
 
-module.exports = Task;
+module.exports = User;
 
