@@ -1,6 +1,7 @@
 const express = require("express");
-const taskController = express.Router();
 const Task = require("../models/taskmodel.js");
+
+const taskController = express.Router();
 
 taskController.get("/tasks", async (request, response) => {
   console.log("Getting tasks:");
