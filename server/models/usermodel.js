@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   hash: String
 });
 
-const User = mongoose.model("User", taskSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
 
