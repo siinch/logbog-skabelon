@@ -1,4 +1,5 @@
 const express = require("express");
+const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/usermodel.js");
 
@@ -30,7 +31,13 @@ userController.post("/user/signup", async (request, response) => {
     response.statusCode=400;  
   }
 
-  response.json({username: user.username});
+  let token = jsonwebtoken.sign(
+    user.username,
+    process.env.TOKEN_SECRET,
+    { expiresIn: '1800s' }
+  );
+
+  response.json({username: user.username, token: token});
 });
 
 // user login

@@ -1,4 +1,5 @@
 // import the neccessary libraries
+require("dotenv").config({path: "./config/.env"});
 const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./config/router.js");
@@ -9,10 +10,7 @@ const server = express();
 server.use(express.static("../client"));
 server.use(express.json());
 server.use(router);
-
-// connect to the database
-const databaseConnectionString = "mongodb://localhost:27017/webapp";
-mongoose.connect(databaseConnectionString);
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING);
 
 // send the root index.html
 server.get("/", async (request, response) => {
