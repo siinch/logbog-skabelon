@@ -8,14 +8,9 @@ async function signUpButtonHandler() {
     
     let user = {
         username: prompt("Choose username:"),
-        password: prompt("Choose password:") 
+        password: prompt("Choose password:"),
+        passwordControl: prompt("Repeat password:") 
     }
-
-    if(user.username == "" || user.username == null)
-        return;
-
-    if(user.password == "" || user.password == null)
-        return;
     
     let response = await signUpUser(user);
 
