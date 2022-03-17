@@ -20,7 +20,7 @@ async function signUpButtonHandler() {
     }
 
     let data = await response.json();
-    alert("Logged in user: " + JSON.stringify(data))
+    alert("Signed up user: " + JSON.stringify(data))
     userSession = data;
     reloadTasks();
 }
