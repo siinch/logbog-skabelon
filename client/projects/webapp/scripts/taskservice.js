@@ -1,6 +1,13 @@
 async function getTasks() {
     let url = "/tasks";
-    return response = await fetch(url);
+    let request = {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + userSession.token
+        },
+    }
+
+    return response = await fetch(url, request);
 }
 
 async function postTask(task) {
@@ -8,7 +15,10 @@ async function postTask(task) {
     let url = "/task";
     let request = {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + userSession.token
+        },
         body: JSON.stringify(task)
     }
     return response = await fetch(url, request);

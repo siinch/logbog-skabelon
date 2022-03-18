@@ -1,14 +1,15 @@
 const express = require("express");
+const auth = require("../middleware/authenticator.js");
 const Task = require("../models/taskmodel.js");
 
 const taskController = express.Router();
 
-taskController.get("/tasks", async (request, response) => {
+taskController.get("/tasks", auth.token, async (request, response) => {
   console.log("Getting tasks:");
   response.json({tasks: await Task.find()});
 }); 
 
-taskController.post("/task", async (request, response) => {
+taskController.post("/task", auth.token, async (request, response) => {
   let task = new Task(request.body);
   console.log("Inserting task:", JSON.stringify(task));
   await task.save();
