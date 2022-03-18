@@ -24,3 +24,27 @@ async function signUpButtonHandler() {
     userSession = data;
     reloadTasks();
 }
+
+// add functionality to the sign up button
+let logInButton = document.getElementById("log-in-button");
+logInButton.addEventListener("click", logInButtonHandler);
+
+async function logInButtonHandler() {
+    
+    let user = {
+        username: prompt("Username:"),
+        password: prompt("Password:"),
+    }
+    
+    let response = await logInUser(user);
+
+    if(!response.ok) {
+        alert (response.status + ": " + response.statusText);
+        return;
+    }
+
+    let data = await response.json();
+    alert("Logged in user: " + JSON.stringify(data))
+    userSession = data;
+    reloadTasks();
+}

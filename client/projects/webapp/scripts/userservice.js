@@ -8,3 +8,14 @@ async function signUpUser(user) {
     }
     return response = await fetch(url, request);
 }
+
+async function logInUser(user) {
+
+    let url = "/user/login";
+    let request = {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(user)
+    }
+    return response = await fetch(url, request);
+}
