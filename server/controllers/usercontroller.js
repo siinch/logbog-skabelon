@@ -1,3 +1,4 @@
+require("dotenv").config({path: "./config/.env"});
 const express = require("express");
 const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -32,9 +33,9 @@ userController.post("/user/signup", async (request, response) => {
   }
 
   let token = jsonwebtoken.sign(
-    user.username,
+    { username: user.username },
     process.env.TOKEN_SECRET,
-    { expiresIn: '1800s' }
+    { expiresIn: "1800s" }
   );
 
   response.json({username: user.username, token: token});
