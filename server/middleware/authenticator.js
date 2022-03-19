@@ -9,7 +9,7 @@ function token (request, response, next) {
         // verify that the token is valid
         console.log("Verifying token...");
         let decoded = jsonwebtoken.verify(token, process.env.TOKEN_SECRET);
-        console.log(decoded);
+        
         // attach the username of the authorized user
         request.username = decoded.username;
         
