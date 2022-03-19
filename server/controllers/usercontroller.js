@@ -92,6 +92,10 @@ userController.delete("/user", auth.token, async (request, response) => {
     let userForDeletion = request.body;
     console.log("Deleting user...:", userForDeletion.username);
 
+    // verify that the user is requesting their own data
+    if(request.username != userForDeletion.username)
+      throw "User did not request deletion of their own user";
+
     // find the user by username in the database
     let user = await User.findOne({ username: userForDeletion.username });
 
