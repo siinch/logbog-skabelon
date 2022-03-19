@@ -87,7 +87,33 @@ userController.post("/user/logout", async (request, response) => {
 });
 
 userController.delete("/user", auth.token, async (request, response) => {
-  console.log("Deleting user...");
+  try {
+    // read the request body and log the username
+    let userForDeletion = request.body;
+    console.log("Deleting user...:", userForDeletion.username);
+
+    // find the user by username in the database
+    let user = await User.findOne({ username: userForDeletion.username });
+
+    // check if the password is correct using the hash
+    let isPasswordCorrect = await bcrypt.compare(
+      userForDeletion.password,
+      user.hash
+    );
+    if(!isPasswordCorrect) {
+      throw "Incorrect password";
+    }
+
+    await user.remove();
+
+    // send response with ex username
+    response.json({username: user.username});
+  }
+  catch (error) {
+    console.log (error);
+    response.sendStatus(400);
+    return
+  }
 });
 
 module.exports = userController;
