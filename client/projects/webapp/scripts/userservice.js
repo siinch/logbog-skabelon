@@ -19,3 +19,17 @@ async function logInUser(user) {
     }
     return response = await fetch(url, request);
 }
+
+async function deleteUser(user) {
+
+    let url = "/user";
+    let request = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + userSession.token
+        },
+        body: JSON.stringify(user)
+    }
+    return response = await fetch(url, request);
+}
