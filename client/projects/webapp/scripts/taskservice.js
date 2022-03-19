@@ -29,7 +29,10 @@ async function updateTask(task) {
     let url = "/task";
     let request = {
         method: "PUT",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + userSession.token
+        },
         body: JSON.stringify(task)
     }
     return response = await fetch(url, request);
@@ -40,7 +43,10 @@ async function deleteTask(task) {
     let url = "/task";
     let request = {
         method: "DELETE",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + userSession.token
+        },
         body: JSON.stringify(task)
     }
     return response = await fetch(url, request);
