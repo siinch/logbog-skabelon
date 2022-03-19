@@ -3,6 +3,7 @@ const express = require("express");
 const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/usermodel.js");
+const auth = require("../middleware/authenticator.js");
 
 const userController = express.Router();
 
@@ -85,7 +86,7 @@ userController.post("/user/logout", async (request, response) => {
   
 });
 
-userController.delete("/user", async (request, response) => {
+userController.delete("/user", auth.token, async (request, response) => {
   console.log("Deleting user...");
 });
 
