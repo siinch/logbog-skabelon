@@ -32,16 +32,16 @@ taskController.post("/task", auth.token, async (request, response) => {
 taskController.put("/task", auth.token, async (request, response) => {
   try {
     // make sure that the user supplied their own username
-    request.body.username = request.username;
-    let taskForUpdate = new Task(request.body);
-    console.log("Updating task:", JSON.stringify(taskForUpdate));
+    let task = new Task(request.body);
+    task.username = request.username;
+    console.log("Updating task:", JSON.stringify(task));
 
-    // make sure the user is the owner of the task
-    let task = await Task.findById(taskForUpdate._id);
-    if(task.username != taskForUpdate.username)
-      throw "User is not owner of the task they tried to update";
+    let query = {
+      _id: task._id,
+      username: task.username
+    };
 
-    await Task.findByIdAndUpdate(taskForUpdate._id, taskForUpdate);
+    await Task.findOneAndUpdate(query, task);
     response.json(request.body);
   }
   catch(error) {
@@ -52,17 +52,12 @@ taskController.put("/task", auth.token, async (request, response) => {
 
 taskController.delete("/task", auth.token, async (request, response) => {
   try {
-    request.body.username = request.username;
-    let taskForDeletion = new Task(request.body);
-    console.log("Deleting task:", JSON.stringify(taskForDeletion));
+    let task = new Task(request.body);
+    task.username = request.username;
+    console.log("Deleting task:", JSON.stringify(task))
 
-    // make sure the user is the owner of the task
-    let task = await Task.findById(taskForDeletion._id);
-    if(task.username != taskForDeletion.username)
-      throw "User is not owner of the task they tried to delete";
-
-    await Task.findByIdAndDelete(taskForDeletion._id);
-    response.json(request.body);
+    await task.delete();
+    response.json(task);
   }
   catch(error) {
     console.log(error);
