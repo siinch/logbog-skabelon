@@ -3,7 +3,6 @@ const express = require("express");
 const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/usermodel.js");
-const auth = require("../middleware/authenticator.js");
 
 const userController = {};
 
@@ -80,7 +79,7 @@ userController.logIn = async (request, response) => {
   }
 };
 
-userController.deleteUser =  async (request, response) => {
+userController.deleteUser =  async (request, response, next) => {
   try {
     // read the request body and log the username
     let user = request.body;
@@ -103,6 +102,7 @@ userController.deleteUser =  async (request, response) => {
 
     // send response with ex username
     response.json({username: user.username});
+    next();
   }
   catch (error) {
     console.log (error);

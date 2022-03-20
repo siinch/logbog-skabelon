@@ -44,7 +44,8 @@ router.post(
 router.delete(
     "/user",
     authenticator.verifyToken,
-    userController.deleteUser
+    userController.deleteUser,
+    taskController.deleteUserTasks
 );
 
 module.exports = router;

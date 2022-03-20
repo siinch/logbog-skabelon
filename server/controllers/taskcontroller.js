@@ -65,6 +65,16 @@ taskController.deleteTask = async (request, response) => {
     console.log(error);
     response.sendStatus(400);
   }
-}; 
+};
+
+taskController.deleteUserTasks = async (request, response) => {
+  try {
+    console.log("Deleting all tasks by user:", request.username);
+    await Task.deleteMany({username: request.username});
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
 
 module.exports = taskController;
