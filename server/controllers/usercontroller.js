@@ -5,10 +5,10 @@ const bcrypt = require("bcrypt");
 const User = require("../models/usermodel.js");
 const auth = require("../middleware/authenticator.js");
 
-const userController = express.Router();
+const userController = {};
 
 // user sign up 
-userController.post("/user/signup", async (request, response) => {
+userController.signUp = async (request, response) => {
   try {
     // read the request body and log username
     let user = request.body;
@@ -42,10 +42,10 @@ userController.post("/user/signup", async (request, response) => {
     console.log(error);
     response.sendStatus(400);
   }
-});
+};
 
 // user login
-userController.post("/user/login", async (request, response) => {
+userController.logIn = async (request, response) => {
   try {
     // read the request body and log the username
     let userForLogin = request.body;
@@ -78,37 +78,28 @@ userController.post("/user/login", async (request, response) => {
     console.log(error);
     response.sendStatus(400);
   }
-});
+};
 
-// user log out
-userController.post("/user/logout", async (request, response) => {
-  console.log("Signing out user...:");
-  
-});
-
-userController.delete("/user", auth.token, async (request, response) => {
+userController.deleteUser =  async (request, response) => {
   try {
     // read the request body and log the username
-    let userForDeletion = request.body;
-    console.log("Deleting user...:", userForDeletion.username);
-
-    // verify that the user is requesting their own data
-    if(request.username != userForDeletion.username)
-      throw "User did not request deletion of their own user";
+    let user = request.body;
+    user.username = request.username;
+    console.log("Deleting user:", user.username);
 
     // find the user by username in the database
-    let user = await User.findOne({ username: userForDeletion.username });
+    let originalUser = await User.findOne({ username: user.username });
 
     // check if the password is correct using the hash
     let isPasswordCorrect = await bcrypt.compare(
-      userForDeletion.password,
-      user.hash
+      user.password,
+      originalUser.hash
     );
     if(!isPasswordCorrect) {
       throw "Incorrect password";
     }
 
-    await user.remove();
+    await originalUser.remove();
 
     // send response with ex username
     response.json({username: user.username});
@@ -118,6 +109,6 @@ userController.delete("/user", auth.token, async (request, response) => {
     response.sendStatus(400);
     return
   }
-});
+};
 
 module.exports = userController;

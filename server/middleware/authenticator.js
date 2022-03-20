@@ -1,6 +1,8 @@
 const jsonwebtoken = require("jsonwebtoken");
 
-function token (request, response, next) {
+let authenticator = {};
+
+authenticator.verifyToken = (request, response, next) => {
     try {
         // get the token from the authorization header
         let authHeader = request.headers["authorization"]
@@ -9,7 +11,7 @@ function token (request, response, next) {
         // verify that the token is valid
         console.log("Verifying token...");
         let decoded = jsonwebtoken.verify(token, process.env.TOKEN_SECRET);
-        
+
         // attach the username of the authorized user
         request.username = decoded.username;
         
@@ -24,6 +26,4 @@ function token (request, response, next) {
     }
 }
 
-module.exports = {
-    token
-}
+module.exports = authenticator;

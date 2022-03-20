@@ -2,23 +2,25 @@ const express = require("express");
 const auth = require("../middleware/authenticator.js");
 const Task = require("../models/taskmodel.js");
 
-const taskController = express.Router();
+const taskController = {};
 
-taskController.get("/tasks", auth.token, async (request, response) => {
+taskController.findTasksByUsername = async (request, response) => {
   try {
     console.log("Getting tasks...");
-    response.json({tasks: await Task.find({username: request.username})});
+    let query = {username: request.username};
+    let tasks = await Task.find(query);
+    response.json({tasks: tasks});
   }
   catch(error) {
     console.log(error);
     response.sendStatus(400);
   }
-}); 
+}; 
 
-taskController.post("/task", auth.token, async (request, response) => {
+taskController.insertTask = async (request, response) => {
   try {
-    request.body.username = request.username;
     let task = new Task(request.body);
+    task.username = request.username;
     console.log("Inserting task:", JSON.stringify(task));
     await task.save();
     response.json(request.body);
@@ -27,9 +29,9 @@ taskController.post("/task", auth.token, async (request, response) => {
     console.log(error);
     response.sendStatus(400);
   }
-});
+};
 
-taskController.put("/task", auth.token, async (request, response) => {
+taskController.updateTask = async (request, response) => {
   try {
     // make sure that the user supplied their own username
     let task = new Task(request.body);
@@ -48,9 +50,9 @@ taskController.put("/task", auth.token, async (request, response) => {
     console.log(error);
     response.sendStatus(400);
   }
-});
+};
 
-taskController.delete("/task", auth.token, async (request, response) => {
+taskController.deleteTask = async (request, response) => {
   try {
     let task = new Task(request.body);
     task.username = request.username;
@@ -63,6 +65,6 @@ taskController.delete("/task", auth.token, async (request, response) => {
     console.log(error);
     response.sendStatus(400);
   }
-}); 
+}; 
 
 module.exports = taskController;
