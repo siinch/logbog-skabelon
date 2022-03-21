@@ -101,7 +101,7 @@ function createTaskComponent (task) {
     // add shiftLeft button
     let shiftLeft = document.createElement("button");
     shiftLeft.innerHTML = "&lt";
-    if(task.state != state.backlog)
+    //if(task.state != state.backlog)
         shiftLeft.addEventListener("click", async function() {
             task.state--;
             await updateTask(task);
@@ -112,7 +112,7 @@ function createTaskComponent (task) {
     // add shiftRight button
     let shiftRight = document.createElement("button");
     shiftRight.innerHTML = "&gt";
-    if(task.state < Object.keys(state).length-1)
+    //if(task.state < Object.keys(state).length-1)
     shiftRight.addEventListener("click", async function() {
         task.state++;
         await updateTask(task);

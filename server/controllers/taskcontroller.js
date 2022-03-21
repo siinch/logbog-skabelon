@@ -43,7 +43,7 @@ taskController.updateTask = async (request, response) => {
       username: task.username
     };
 
-    await Task.findOneAndUpdate(query, task);
+    await Task.findOneAndUpdate(query, task, {runValidators: true});
     response.json(request.body);
   }
   catch(error) {
