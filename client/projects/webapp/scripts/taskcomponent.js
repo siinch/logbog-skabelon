@@ -2,7 +2,6 @@ class TaskComponent extends HTMLElement {
     constructor () {
         super();
         this.shadow = this.attachShadow({mode: "open"});
-        this.task = {title: "Test task", state: 0};
     }
 
     connectedCallback () {
