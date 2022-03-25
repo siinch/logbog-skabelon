@@ -4,18 +4,30 @@ class TaskComponent extends HTMLElement {
         let shadow = this.attachShadow({mode: "open"});
 
         shadow.innerHTML = `
-        <style>
-        div {
-            background-color: cornflowerblue;
+        <style> 
+        .outer-wrapper {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
             width: 100%;
+            padding: 10px;
+        }
+        .inner-wrapper {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            background-color: cornflowerblue;
+            padding: 10px;
         }
         </style>
 
-        <div>
+        <div class="outer-wrapper">
+        <div class="inner-wrapper">
         <h3></h3>
             <button>&#128465</button>
             <button>&lt</button>
             <button>&gt</button>
+        </div>
         </div>
         `;
     }
