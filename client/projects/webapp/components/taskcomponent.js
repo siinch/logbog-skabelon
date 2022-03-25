@@ -2,26 +2,25 @@ class TaskComponent extends HTMLElement {
     constructor () {
         super();
         let shadow = this.attachShadow({mode: "open"});
-        
-        let div = document.createElement("div");
-        let style = document.createElement("style");
-        let title = document.createElement("h3");
-        div.appendChild(title);
-        shadow.appendChild(div);
-        shadow.appendChild(style);
+
+        shadow.innerHTML = `
+        <style>
+        div {
+            background-color: cornflowerblue;
+            width: 100%;
+        }
+        </style>
+
+        <div>
+        <h3></h3>
+            <button>&#128465</button>
+            <button>&lt</button>
+            <button>&gt</button>
+        </div>
+        `;
     }
 
     connectedCallback () {
-        let style = this.shadowRoot.querySelector("style");
-        style.textContent = `
-        div {
-            background-color: cornflowerblue;
-            padding: 10px;
-            margin: 10px;
-            width: 20%;
-            float: left;
-        }
-        `;
         this.render();        
     }
 

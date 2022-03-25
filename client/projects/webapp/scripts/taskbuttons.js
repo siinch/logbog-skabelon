@@ -89,7 +89,7 @@ function createTaskComponent (task) {
 
     // add remove button
     let removeButton = document.createElement("button");
-    removeButton.innerHTML = "-";
+    removeButton.innerHTML = "&#128465";
     removeButton.addEventListener("click", async function () {
         if(!confirm("Are you sure you wish to remove this task?"))
             return;
