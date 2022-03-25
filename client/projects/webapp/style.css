@@ -7,6 +7,10 @@
     width: 20%;
 }
 
+#tasks {
+    display: inline-block;
+}
+
 #tasks .task {
     background-color: cornflowerblue;
     padding: 10px;

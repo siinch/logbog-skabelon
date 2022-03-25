@@ -14,9 +14,11 @@
         <button id="log-in-button">Log in</button>
         <button id="log-out-button">Log out</button>
         <button id="delete-user-button">Delete user</button>
-        <br><br>
+        <br>
+        <br>
         <button id="add-task-button">+</button>
         <button id="reload-tasks-button">↻</button>
+        <br>
         <section id="tasks">
             <article id="backlog">
                 <h2>Backlog</h2>
@@ -32,10 +34,12 @@
             </article>
         </section>
         <footer>
-            <task-component task={"title":"SomeTask","state":0}></task-component>
+            <task-component task={"title":"Task#1","state":0}></task-component>
+            <task-component task={"title":"Task#2","state":0}></task-component>
+            <task-component task={"title":"Task#3","state":0}></task-component>
         </footer>
 
-        <script src="./scripts/taskcomponent.js"></script>
+        <script src="components/taskcomponent.js"></script>
         <script src="scripts/userservice.js"></script>
         <script src="scripts/userbuttons.js"></script>
         <script src="scripts/taskservice.js"></script>
