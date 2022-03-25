@@ -5,7 +5,9 @@
     min-width: 300px;
     width: 20%;
     margin: 10px;
-    min-height: 50vh;
+    height: 70vh;
+
+    overflow-y: auto;
 }
 
 #tasks {
