@@ -54,10 +54,10 @@ async function reloadTasks() {
     }
 
     // Remove all old taskComponents
-    let taskComponents = document.getElementsByTagName("task-component");
+    let taskCards = document.getElementsByTagName("task-card");
 
-    while (taskComponents.length > 0) {
-        taskComponents[0].parentNode.removeChild(taskComponents[0]);
+    while (taskCards.length > 0) {
+        taskCards[0].parentNode.removeChild(taskCards[0]);
     }
 
     // Insert new task components
@@ -70,10 +70,10 @@ async function reloadTasks() {
 
         for (let task of tasksWithMatchingState) {
             // create task component
-            let taskComponent = document.createElement("task-component");
-            taskComponent.task = task;
+            let taskCard = document.createElement("task-card");
+            taskCard.task = task;
             // append task component
-            parent.appendChild(taskComponent);
+            parent.appendChild(taskCard);
         }
     }
 }

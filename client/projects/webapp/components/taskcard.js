@@ -1,9 +1,15 @@
-class TaskComponent extends HTMLElement {
+class TaskCard extends HTMLElement {
     constructor () {
         super();
-        let shadow = this.attachShadow({mode: "open"});
+        this.attachShadow({mode: "open"});
+    }
 
-        shadow.innerHTML = `
+    connectedCallback () {
+        this.render();        
+    }
+
+    render () {
+        this.shadowRoot.innerHTML = `
         <style> 
         .outer-wrapper {
             -webkit-box-sizing: border-box;
@@ -23,22 +29,13 @@ class TaskComponent extends HTMLElement {
 
         <div class="outer-wrapper">
         <div class="inner-wrapper">
-        <h3></h3>
+        <h3>${this.task.title}</h3>
             <button>&#128465</button>
-            <button>&lt</button>
-            <button>&gt</button>
+            <task-shifter direction="left" task='${JSON.stringify(this.task)}'></task-shifter>
+            <task-shifter direction="right" task='${JSON.stringify(this.task)}'></task-shifter>
         </div>
         </div>
         `;
-    }
-
-    connectedCallback () {
-        this.render();        
-    }
-
-    render () {
-       let title = this.shadowRoot.querySelector("h3");
-       title.innerHTML = this.task.title;
     }
 
     get task () {
@@ -58,4 +55,4 @@ class TaskComponent extends HTMLElement {
     }
 }
 
-customElements.define("task-component", TaskComponent);
+customElements.define("task-card", TaskCard);
