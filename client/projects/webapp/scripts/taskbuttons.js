@@ -54,7 +54,7 @@ async function reloadTasks() {
     }
 
     // Remove all old taskComponents
-    let taskComponents = document.getElementsByClassName("task");
+    let taskComponents = document.getElementsByTagName("task-component");
 
     while (taskComponents.length > 0) {
         taskComponents[0].parentNode.removeChild(taskComponents[0]);
@@ -65,12 +65,13 @@ async function reloadTasks() {
 
         let parent = document.getElementById(possibleState);
 
+
         let tasksWithMatchingState = tasks.filter(task => task.state == state[possibleState]);
 
         for (let task of tasksWithMatchingState) {
             // create task component
-            let taskComponent = createTaskComponent(task);
-
+            let taskComponent = document.createElement("task-component");
+            taskComponent.task = task;
             // append task component
             parent.appendChild(taskComponent);
         }
