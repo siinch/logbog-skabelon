@@ -5,7 +5,7 @@ class TaskList extends HTMLElement {
         "To-do",
         "Doing",
         "Done"
-    ]
+    ];
 
     constructor () {
         super();
