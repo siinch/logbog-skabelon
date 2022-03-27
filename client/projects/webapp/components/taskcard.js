@@ -9,6 +9,7 @@ class TaskCard extends HTMLElement {
     }
 
     render () {
+        let task = JSON.stringify(this.task);
         this.shadowRoot.innerHTML = `
         <style> 
         .outer-wrapper {
@@ -30,9 +31,9 @@ class TaskCard extends HTMLElement {
         <div class="outer-wrapper">
         <div class="inner-wrapper">
         <h3>${this.task.title}</h3>
-            <button>&#128465</button>
-            <task-shifter direction="left" task='${JSON.stringify(this.task)}'></task-shifter>
-            <task-shifter direction="right" task='${JSON.stringify(this.task)}'></task-shifter>
+            <task-deleter task='${task}'></task-deleter>
+            <task-shifter direction="left" task='${task}'></task-shifter>
+            <task-shifter direction="right" task='${task}'></task-shifter>
         </div>
         </div>
         `;
