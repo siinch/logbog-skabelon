@@ -60,6 +60,9 @@ async function reloadTasks() {
         taskCards[0].parentNode.removeChild(taskCards[0]);
     }
 
+    let taskBoard = document.getElementsByTagName("task-board")[0];
+    taskBoard.tasks = tasks;
+
     // Insert new task components
     for (let possibleState in state) {
 

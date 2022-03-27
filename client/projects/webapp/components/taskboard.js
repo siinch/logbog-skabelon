@@ -6,7 +6,13 @@ class TaskBoard extends HTMLElement {
     }
 
     render () {
-
+        
+        let taskLists = "";
+        for(let i = 0; i < 4; i++) {
+            let tasks = this.tasks.filter(task => task.state == i);
+            tasks = JSON.stringify({tasks: tasks});
+            taskLists += `<task-list state=${i} tasks='${tasks}'></task-list>`;
+        }
         
         this.shadowRoot.innerHTML = `
         <style>
@@ -17,10 +23,7 @@ class TaskBoard extends HTMLElement {
 
         <div>
             <h1>Kanban Board</h1>
-            <task-list state=0></task-list>
-            <task-list state=1></task-list>
-            <task-list state=2></task-list>
-            <task-list state=3></task-list>
+            ${taskLists}
         </div>
         `;
     }
