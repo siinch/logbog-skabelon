@@ -30,6 +30,7 @@ class TaskList extends HTMLElement {
     }
 
     get tasks () {
+        if(JSON.parse(this.getAttribute("tasks")) == null) return [];
         return JSON.parse(this.getAttribute("tasks")).tasks;
     }
 
