@@ -21,6 +21,7 @@ class TaskShifter extends HTMLElement {
         <button>${symbol}</button>
         `;
         
+        if(this.task.state != 0 && this.task.state != 3)
         this.onclick = async function() {
             let task = this.task;
             if(this.direction == "left")

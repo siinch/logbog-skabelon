@@ -30,6 +30,8 @@ class TaskBoard extends HTMLElement {
 
         <div>
             <h1>Kanban Board</h1>
+            <task-creater></task-creater>
+            <br>
             ${taskLists}
         </div>
         `;
