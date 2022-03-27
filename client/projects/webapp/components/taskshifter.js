@@ -10,18 +10,9 @@ class TaskShifter extends HTMLElement {
 
     render () {
         let symbol = "&gt";
+        let color = "black";
+        let inactiveColor = "lightgray";
 
-        if(this.direction == "left")
-            symbol = "&lt";
-
-        this.shadowRoot.innerHTML = `
-        <style> 
-        </style>
-
-        <button>${symbol}</button>
-        `;
-        
-        if(this.task.state != 0 && this.task.state != 3)
         this.onclick = async function() {
             let task = this.task;
             if(this.direction == "left")
@@ -31,6 +22,29 @@ class TaskShifter extends HTMLElement {
             await updateTask(task);
             reloadTasks();
         };
+
+        if(this.direction == "left")
+            symbol = "&lt";
+
+        if(this.direction == "left" && this.task.state == 0) {
+            color = inactiveColor;
+            this.onclick = () => {};
+        }
+
+        if(this.direction == "right" && this.task.state == 3) {
+            color = inactiveColor;
+            this.onclick = () => {}
+        }
+
+        this.shadowRoot.innerHTML = `
+        <style>
+            button {
+                color: ${color};
+            }
+        </style>
+
+        <button>${symbol}</button>
+        `;
     }
 
     get task () {
