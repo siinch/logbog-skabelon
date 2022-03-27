@@ -1,5 +1,12 @@
 class TaskBoard extends HTMLElement {
 
+    static states = [
+        {name: "Backlog", code: 0},
+        {name: "To-do", code: 1},
+        {name: "Doing", code: 2},
+        {name: "Done", code: 3}
+    ];
+
     constructor () {
         super();
         this.attachShadow({mode: "open"});
@@ -8,10 +15,10 @@ class TaskBoard extends HTMLElement {
     render () {
         
         let taskLists = "";
-        for(let i = 0; i < 4; i++) {
-            let tasks = this.tasks.filter(task => task.state == i);
+        for(let state of TaskBoard.states) {
+            let tasks = this.tasks.filter(task => task.state == state.code);
             tasks = JSON.stringify({tasks: tasks});
-            taskLists += `<task-list state=${i} tasks='${tasks}'></task-list>`;
+            taskLists += `<task-list title=${state.name} tasks='${tasks}'></task-list>`;
         }
         
         this.shadowRoot.innerHTML = `

@@ -1,12 +1,5 @@
 class TaskList extends HTMLElement {
 
-    static stateNames = [
-        "Backlog",
-        "To-do",
-        "Doing",
-        "Done"
-    ];
-
     constructor () {
         super();
         this.attachShadow({mode: "open"});
@@ -34,7 +27,7 @@ class TaskList extends HTMLElement {
         </style>
 
         <div>
-            <h2>${TaskList.stateNames[this.state]}</h2>
+            <h2>${this.title}</h2>
             ${taskCards}
         </div>
         `;
@@ -49,12 +42,12 @@ class TaskList extends HTMLElement {
         this.setAttribute("tasks", JSON.stringify({tasks: newValue}));
     }
 
-    get state () {
-        return this.getAttribute("state");
+    get title () {
+        return this.getAttribute("title");
     }
 
-    set state (newValue) {
-        this.setAttribute("state", newValue);
+    set title (newValue) {
+        this.setAttribute("title", newValue);
     }
 
     connectedCallback () {
@@ -62,7 +55,7 @@ class TaskList extends HTMLElement {
     }
 
     static get observedAttributes () {
-        return ["tasks", "state"];
+        return ["tasks", "title"];
     }
 
     attributeChangedCallback (attribute, oldValue, newValue) {

@@ -64,21 +64,21 @@ async function reloadTasks() {
     taskBoard.tasks = tasks;
 
     // Insert new task components
-    for (let possibleState in state) {
+    /*for (let possibleState in state) {
 
         let parent = document.getElementById(possibleState);
 
 
         let tasksWithMatchingState = tasks.filter(task => task.state == state[possibleState]);
         parent.tasks = tasksWithMatchingState;
-        /*for (let task of tasksWithMatchingState) {
+        for (let task of tasksWithMatchingState) {
             // create task component
             let taskCard = document.createElement("task-card");
             taskCard.task = task;
             // append task component
             parent.appendChild(taskCard);
-        }*/
-    }
+        }
+    }*/
 }
 
 function createTaskComponent (task) {
