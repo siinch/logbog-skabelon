@@ -67,14 +67,14 @@ async function reloadTasks() {
 
 
         let tasksWithMatchingState = tasks.filter(task => task.state == state[possibleState]);
-
-        for (let task of tasksWithMatchingState) {
+        parent.tasks = tasksWithMatchingState;
+        /*for (let task of tasksWithMatchingState) {
             // create task component
             let taskCard = document.createElement("task-card");
             taskCard.task = task;
             // append task component
             parent.appendChild(taskCard);
-        }
+        }*/
     }
 }
 
