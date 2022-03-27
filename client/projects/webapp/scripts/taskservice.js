@@ -1,3 +1,5 @@
+
+
 async function getTasks() {
     let url = "/tasks";
     let request = {
@@ -50,4 +52,14 @@ async function deleteTask(task) {
         body: JSON.stringify(task)
     }
     return response = await fetch(url, request);
+}
+
+let taskBoard = document.getElementsByTagName("task-board")[0];
+async function reloadTasks() {
+
+    let response = await getTasks();
+    if(response.ok) {
+        let data = await response.json();
+        taskBoard.tasks = data.tasks;
+    }
 }

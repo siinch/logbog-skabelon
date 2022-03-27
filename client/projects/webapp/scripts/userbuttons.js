@@ -60,7 +60,7 @@ async function logOutButtonHandler() {
     
     userSession = {};
 
-    tasks = [];
+    taskBoard.tasks = [];
     reloadTasks();
 }
 
@@ -88,6 +88,6 @@ async function deleteUserButtonHandler() {
     let data = await response.json();
     alert("Deleted user: " + JSON.stringify(data))
     userSession = {}
-    tasks = [];
+    taskBoard.tasks = [];
     reloadTasks();
 }
