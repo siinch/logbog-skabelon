@@ -56,7 +56,7 @@ async function deleteTask(task) {
 
 let taskBoard = document.getElementsByTagName("task-board")[0];
 async function reloadTasks() {
-
+    console.log("reloading tasks...");
     let response = await getTasks();
     if(response.ok) {
         let data = await response.json();

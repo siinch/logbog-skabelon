@@ -31,7 +31,6 @@ class TaskCreater extends HTMLElement {
         
             let data = await response.json();
             alert(JSON.stringify(data))
-            tasks.push(task);
             reloadTasks();
         }        
     }
