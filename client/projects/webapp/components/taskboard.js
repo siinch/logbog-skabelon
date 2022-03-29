@@ -10,6 +10,17 @@ class TaskBoard extends HTMLElement {
     constructor () {
         super();
         this.attachShadow({mode: "open"});
+        this.updateTasks();
+        let taskBoard = this;
+        Channel.subscribe("update-tasks", (data) => taskBoard.updateTasks());
+    }
+
+    async updateTasks () {
+        let response = await getTasks();
+        if(response.ok) {
+            let data = await response.json();
+            this.tasks = data.tasks;
+        }
     }
 
     render () {

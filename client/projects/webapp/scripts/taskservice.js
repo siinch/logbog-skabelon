@@ -54,7 +54,7 @@ async function deleteTask(task) {
     return response = await fetch(url, request);
 }
 
-let taskBoard = document.getElementsByTagName("task-board")[0];
+//let taskBoard = document.getElementsByTagName("task-board")[0];
 async function reloadTasks() {
     console.log("reloading tasks...");
     let response = await getTasks();
