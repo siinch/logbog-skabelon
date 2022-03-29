@@ -24,6 +24,17 @@ class TaskList extends HTMLElement {
             width: 25%;
             height: 70vh;
         }
+        @media screen and (max-width: 1200px) {
+            .outer-wrapper {
+                width: 50%;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .outer-wrapper {
+                width: 100%;
+            }
+        }
+
         .inner-wrapper {
             text-align: center;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
