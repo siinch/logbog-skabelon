@@ -17,7 +17,7 @@ class UserSignupForm extends HTMLElement {
                 <label>Username:</label><br>
                 <input name="username" type="text" placeholder="John Doe"><br>
                 <label>Password:</label><br>
-                <input name="password" type="password" placeholder="*********"><br><br>
+                <input name="password" type="password" placeholder="*********"><br>
                 <label>Repeat password:</label><br>
                 <input name="passwordControl" type="password" placeholder="*********"><br><br>
                 <input type="submit" value="Sign Up">
