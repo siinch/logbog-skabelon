@@ -20,7 +20,7 @@ class TaskShifter extends HTMLElement {
             else
                 task.state++;
             await updateTask(task);
-            reloadTasks();
+            Channel.publish("update-tasks", {});
         };
 
         if(this.direction == "left")

@@ -18,7 +18,7 @@ class TaskDeleter extends HTMLElement {
         
         this.onclick = async function() {
             await deleteTask(this.task);
-            reloadTasks();
+            Channel.publish("update-tasks", {});
         };
     }
 
