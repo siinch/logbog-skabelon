@@ -37,7 +37,7 @@ class TaskBoard extends HTMLElement {
         div {
             display: inline-block;
         }
-        #logout {
+        #logout, #delete-user{
             float: right;
         }
         </style>
@@ -46,6 +46,7 @@ class TaskBoard extends HTMLElement {
             <h1>Kanban Board</h1>
             <task-creater></task-creater>
             <button id="logout">Log out</button>
+            <button id="delete-user">Delete user</button>
             <br>
             ${taskLists}
         </div>
@@ -56,6 +57,13 @@ class TaskBoard extends HTMLElement {
             if(confirm("Are you sure you want to log out?")) {
                 Channel.publish("switch-page", "user-login-form");
                 userSession = {};
+            }
+        }
+
+        let deleteUser = this.shadowRoot.getElementById("delete-user");
+        deleteUser.onclick = function () {
+            if(confirm("Are you sure you want to delete this user?")) {
+                Channel.publish("switch-page", "user-delete-form");
             }
         }
     }
