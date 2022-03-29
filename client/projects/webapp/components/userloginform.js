@@ -7,22 +7,49 @@ class UserLoginForm extends HTMLElement {
 
     render () {
         this.shadowRoot.innerHTML = `
-        <style> 
+        <style>
+        .outer-wrapper {
+            text-align: center;
+            padding: 1vh 25vw;
+        }
+        .inner-wrapper {
+            box-sizing: border-box;
+            width: 100%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: white;
+        }
+        #sign-up {
+            color: #aa9dad;
+        }
+        #sign-up:hover {
+            color: #ff9ebc;
+        }
+        input {
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: green;
+        }
 
         </style>
         
-        <div>
+        <div class="outer-wrapper">
+        <div class="inner-wrapper">
             <h2>Log In Form:</h2>
             <form name="login" id="login-form">
                 <label>Username:</label><br>
-                <input name="username" type="text" placeholder="John Doe"><br>
+                <input name="username" type="text" placeholder="John Doe"><br><br>
                 <label>Password:</label><br>
                 <input name="password" type="password" placeholder="*********"><br><br>
                 <input type="submit" value="Log In">
             </form>
-
-            <br>
-            <p id="sign-up">Sign up instead</p>
+        </div>
+        <br>
+        <p id="sign-up">Sign up instead</p>
         </div>
         `;
 

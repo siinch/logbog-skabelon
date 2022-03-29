@@ -1,25 +1,5 @@
-#tasks article {
-    background-color: lightgray;
-    padding: 10px;
-    float: left;
-    min-width: 300px;
-    width: 20%;
-    margin: 10px;
-    height: 70vh;
-
-    overflow-y: auto;
-}
-
-#tasks {
-    display: inline-block;
-}
-
-#tasks .task {
-    background-color: cornflowerblue;
-    padding: 10px;
-    margin: 10px;
-}
-
-button.inactive {
-    color: lightgray;
+body {
+    background-color: #fff4d6;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
 }
