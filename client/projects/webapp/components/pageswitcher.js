@@ -34,7 +34,7 @@ class PageSwitcher extends HTMLElement {
     }
 
     attributeChangedCallback (attribute, oldValue, newValue) {
-        this.render();
+        if(attribute == "current") this.render();
     }
 }
 

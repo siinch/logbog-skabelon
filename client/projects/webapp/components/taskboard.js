@@ -16,9 +16,11 @@ class TaskBoard extends HTMLElement {
     }
 
     async updateTasks () {
+        console.log("updating tasks")
         let response = await getTasks();
         if(response.ok) {
             let data = await response.json();
+            console.log(this)
             this.tasks = data.tasks;
         }
     }

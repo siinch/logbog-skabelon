@@ -12,7 +12,7 @@ class Channel {
     static publish (event, data) {
         
         for(let subscriber of Channel.#subscribers) {
-            if(subscriber.event = event)
+            if(subscriber.event == event)
                 subscriber.callback(data);
         }
 
