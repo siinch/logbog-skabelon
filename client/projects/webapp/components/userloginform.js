@@ -25,11 +25,6 @@ class UserLoginForm extends HTMLElement {
                 padding: 5vw;
             }
         }
-        @media screen and (max-width: px) {
-            .outer-wrapper {
-                padding: 5vw;
-            }
-        }
         .inner-wrapper {
             box-sizing: border-box;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

@@ -8,21 +8,63 @@ class UserDeleteForm extends HTMLElement {
     render () {
         this.shadowRoot.innerHTML = `
         <style> 
+        * {
+        font-family: Arial, Helvetica, sans-serif;
+        }
 
+        h2 {
+            font-size: 40px
+        }
+
+        .outer-wrapper {
+            text-align: center;
+            padding: 15vh 35vw;
+        }
+        @media screen and (max-width: 600px) {
+            .outer-wrapper {
+                padding: 5vw;
+            }
+        }
+        .inner-wrapper {
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            background-color: white;
+        }
+        #back {
+            color: #aa9dad;
+        }
+        #back:hover {
+            color: #ff9ebc;
+        }
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 20px;
+        }
+        input[type="submit"] { 
+            font-size: 20px;
+            color: #f2f2f2; 
+            background-color: #181213;
+        }
+        input[type="submit"]:hover { 
+            background-color: #ffffe1;
+            color: black;
+        }
         </style>
         
-        <div>
-            <h2>Delete User Form:</h2>
+        <div class="outer-wrapper   ">
+        <div class="inner-wrapper">
+            <h2>Goodbye</h2>
+            <h3>Sad to see you go</h3>
             <form name="delete-user" id="form">
-                <label>Username:</label><br>
-                <input name="username" type="text" placeholder="John Doe"><br>
-                <label>Password:</label><br>
-                <input name="password" type="password" placeholder="*********"><br>
-                <input type="submit" value="Delete user">
+                <input name="username" type="text" placeholder="Username"><br><br>
+                <input name="password" type="password" placeholder="Password"><br><br>
+                <input type="submit" value="DELETE USER">
             </form> 
         </div>
-        <br>
         <p id="back">Go back instead</p>
+        </div>
         `;
 
         let form = this.shadowRoot.getElementById("form");
