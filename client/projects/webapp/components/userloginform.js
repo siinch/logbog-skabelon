@@ -42,7 +42,7 @@ class UserLoginForm extends HTMLElement {
                 let data = await response.json();
                 alert("Logged in user: " + JSON.stringify(data))
                 userSession = data;
-                reloadTasks();
+                Channel.publish("switch-page", "task-board");
             }
             handleForm();
             // return false to prevent redirection

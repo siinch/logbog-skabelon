@@ -4,6 +4,7 @@ class PageSwitcher extends HTMLElement {
         super();
         this.attachShadow({mode: "open"});
         this.current = "user-login-form";
+        Channel.subscribe("switch-page", (data) => this.current = data);
     }
 
     render () {
