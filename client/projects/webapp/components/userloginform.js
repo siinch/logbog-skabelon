@@ -19,7 +19,10 @@ class UserLoginForm extends HTMLElement {
                 <label>Password:</label><br>
                 <input name="password" type="password" placeholder="*********"><br><br>
                 <input type="submit" value="Log In">
-            </form> 
+            </form>
+
+            <br>
+            <p id="sign-up">Sign up instead</p>
         </div>
         `;
 
@@ -47,6 +50,11 @@ class UserLoginForm extends HTMLElement {
             handleForm();
             // return false to prevent redirection
             return false;
+        }
+
+        let signup = this.shadowRoot.getElementById("sign-up");
+        signup.onclick = function () {
+            Channel.publish("switch-page", "user-signup-form");
         }
     }
 

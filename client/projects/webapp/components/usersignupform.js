@@ -23,6 +23,8 @@ class UserSignupForm extends HTMLElement {
                 <input type="submit" value="Sign Up">
             </form> 
         </div>
+        <br>
+        <p id="login">Log in instead</p>
         `;
 
         let form = this.shadowRoot.getElementById("signup-form");
@@ -45,11 +47,16 @@ class UserSignupForm extends HTMLElement {
                 let data = await response.json();
                 alert("Signed up user: " + JSON.stringify(data))
                 userSession = data;
-                reloadTasks();
+                Channel.publish("switch-page", "task-board");
             }
             handleForm();
             // return false to prevent redirection
             return false;
+        }
+
+        let login = this.shadowRoot.getElementById("login");
+        login.onclick = function () {
+            Channel.publish("switch-page", "user-login-form");
         }
     }
 
