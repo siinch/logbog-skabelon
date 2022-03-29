@@ -11,6 +11,9 @@ class PageSwitcher extends HTMLElement {
         
         this.shadowRoot.innerHTML = `
         <style>
+        * {
+            width: 100%;
+        }
         </style>
 
             <${this.current}></${this.current}>

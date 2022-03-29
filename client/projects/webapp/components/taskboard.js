@@ -1,10 +1,10 @@
 class TaskBoard extends HTMLElement {
 
     static states = [
-        {name: "Backlog", code: 0},
-        {name: "To-do", code: 1},
-        {name: "Doing", code: 2},
-        {name: "Done", code: 3}
+        {name: "BACKLOG", code: 0},
+        {name: "TO-DO", code: 1},
+        {name: "DOING", code: 2},
+        {name: "DONE", code: 3}
     ];
 
     constructor () {
@@ -36,6 +36,10 @@ class TaskBoard extends HTMLElement {
         <style>
         div {
             display: inline-block;
+            padding: 0 10vw;
+            height: 70vh;
+            width: 100%;
+            box-sizing: border-box;
         }
         #logout, #delete-user{
             float: right;

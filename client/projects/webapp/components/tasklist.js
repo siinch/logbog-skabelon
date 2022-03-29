@@ -14,21 +14,31 @@ class TaskList extends HTMLElement {
 
         this.shadowRoot.innerHTML = `
         <style>
-        div {
-            background-color: lightgray;
-            padding: 10px;
+        * {
+            margin 0 auto;
+            box-sizing: border-box;
+        }
+        .outer-wrapper {
             float: left;
-            min-width: 300px;
-            width: 20%;
-            margin: 10px;
+            padding: 10px;
+            width: 25%;
             height: 70vh;
+        }
+        .inner-wrapper {
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            background-color: white;
+            padding: 10px;
+            width: 100%;
+            height: 100%;
             overflow-y: auto;
         }
         </style>
-
-        <div>
+        <div class="outer-wrapper">
+        <div class="inner-wrapper">
             <h2>${this.title}</h2>
             ${taskCards}
+        </div>
         </div>
         `;
     }
