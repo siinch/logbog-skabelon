@@ -8,31 +8,38 @@ class TaskCreater extends HTMLElement {
          this.shadowRoot.innerHTML = `
         <style> 
         </style>
-
-        <button>+</button>
+        <form id="form">
+            <input type="text" name="input" placeholder="Kick ass">
+            <input type="submit" value="Add task">
+        </form>
         `;
-        
-        this.onclick = async function () {
-    
-            let task = {
-                title: prompt("Title of new task:"),
-                state: 0 
-            }
-        
-            if(task.title == "" || task.title == null)
-                return;
+
+        let form = this.shadowRoot.getElementById("form");
+        form.onsubmit = function () {
+            let handleInput = async function () {
+                let task = {
+                    title: form.input.value,
+                    state: 0 
+                }
             
-            let response = await postTask(task);
-        
-            if(!response.ok) {
-                alert (response.status + ": " + response.statusText);
-                return;
+                if(task.title == "" || task.title == null)
+                    return;
+                
+                let response = await postTask(task);
+            
+                if(!response.ok) {
+                    alert (response.status + ": " + response.statusText);
+                    return;
+                }
+            
+                let data = await response.json();
+                //alert(JSON.stringify(data))
+                Channel.publish("update-tasks", {})
             }
-        
-            let data = await response.json();
-            alert(JSON.stringify(data))
-            Channel.publish("update-tasks", {})
-        }        
+            handleInput();
+            return false;
+        }
+            
     }
 
     connectedCallback () {
