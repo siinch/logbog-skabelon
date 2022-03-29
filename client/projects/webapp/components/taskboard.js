@@ -37,15 +37,27 @@ class TaskBoard extends HTMLElement {
         div {
             display: inline-block;
         }
+        #logout {
+            float: right;
+        }
         </style>
 
         <div>
             <h1>Kanban Board</h1>
             <task-creater></task-creater>
+            <button id="logout">Log out</button>
             <br>
             ${taskLists}
         </div>
         `;
+
+        let logout = this.shadowRoot.getElementById("logout");
+        logout.onclick = function () {
+            if(confirm("Are you sure you want to log out?")) {
+                Channel.publish("switch-page", "user-login-form");
+                userSession = {};
+            }
+        }
     }
 
     get tasks () {
