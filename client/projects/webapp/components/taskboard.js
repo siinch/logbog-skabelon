@@ -1,5 +1,7 @@
 class TaskBoard extends HTMLElement {
 
+    static #instance;
+
     static states = [
         {name: "BACKLOG", code: 0},
         {name: "TO-DO", code: 1},
@@ -10,16 +12,16 @@ class TaskBoard extends HTMLElement {
     constructor () {
         super();
         this.attachShadow({mode: "open"});
-        this.updateTasks();
-        let taskBoard = this;
-        Channel.subscribe("update-tasks", (data) => taskBoard.updateTasks());
+        TaskBoard.#instance = this;
+        TaskBoard.updateTasks();
     }
 
-    async updateTasks () {
+    static async updateTasks () {
+        console.log("deder");
         let response = await getTasks();
         if(response.ok) {
             let data = await response.json();
-            this.tasks = data.tasks;
+            TaskBoard.#instance.tasks = data.tasks;
         }
     }
 
@@ -110,5 +112,5 @@ class TaskBoard extends HTMLElement {
         this.render();
     }
 }
-
+Channel.subscribe("update-tasks", (data) => TaskBoard.updateTasks());
 customElements.define("task-board", TaskBoard);
