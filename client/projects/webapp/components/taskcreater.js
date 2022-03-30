@@ -5,12 +5,27 @@ class TaskCreater extends HTMLElement {
     }
 
     render () {
-         this.shadowRoot.innerHTML = `
-        <style> 
+        this.shadowRoot.innerHTML = `
+        <style>
+        input {
+            box-sizing: border-box;
+            width: 100% auto;
+            padding: 10px;
+        }
+        input[type="submit"] {
+            width: 20%;
+            font-size: 20px;
+            color: #f2f2f2; 
+            background-color: #181213;
+        }
+        input[type="submit"]:hover { 
+            background-color: #ffffe1;
+            color: black;
+        }
         </style>
         <form id="form">
-            <input type="text" name="input" placeholder="Kick ass">
-            <input type="submit" value="Add task">
+            <input type="text" name="input" placeholder="Add task">
+            <input type="submit" value="+">
         </form>
         `;
 
