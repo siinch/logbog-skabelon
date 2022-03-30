@@ -79,15 +79,13 @@ class TaskBoard extends HTMLElement {
         logout.onclick = function () {
             if(confirm("Are you sure you want to log out?")) {
                 Channel.publish("switch-page", "user-login-form");
-                userSession = {};
+                localStorage.removeItem("token");
             }
         }
 
         let deleteUser = this.shadowRoot.getElementById("delete-user");
         deleteUser.onclick = function () {
-            if(confirm("Are you sure you want to delete this user?")) {
-                Channel.publish("switch-page", "user-delete-form");
-            }
+            Channel.publish("switch-page", "user-delete-form");
         }
     }
 

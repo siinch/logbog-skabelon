@@ -84,10 +84,11 @@ class UserDeleteForm extends HTMLElement {
                 }
 
                 let data = await response.json();
-                userSession = {};
+                localStorage.removeItem("token");
                 Channel.publish("switch-page", "user-login-form");
             }
-            handleForm();
+            if(confirm("Are you sure you want to delete this user?"))
+                handleForm();
             // return false to prevent redirection
             return false;
         }

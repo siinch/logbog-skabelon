@@ -3,8 +3,17 @@ class PageSwitcher extends HTMLElement {
     constructor () {
         super();
         this.attachShadow({mode: "open"});
-        this.current = "user-login-form";
-        Channel.subscribe("switch-page", (data) => this.current = data);
+        if(localStorage.page == undefined)
+            this.current = "user-login-form";
+        else
+            this.current = localStorage.page;
+        Channel.subscribe(
+            "switch-page",
+            (data) => {
+                this.current = data;
+                localStorage.setItem("page", data);
+            }
+        );
     }
 
     render () {

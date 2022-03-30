@@ -1,11 +1,9 @@
-
-
 async function getTasks() {
     let url = "/tasks";
     let request = {
         method: "GET",
         headers: {
-            "Authorization": "Bearer " + userSession.token
+            "Authorization": "Bearer " + localStorage.token
         },
     }
 
@@ -19,7 +17,7 @@ async function postTask(task) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + userSession.token
+            "Authorization": "Bearer " + localStorage.token
         },
         body: JSON.stringify(task)
     }
@@ -33,7 +31,7 @@ async function updateTask(task) {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + userSession.token
+            "Authorization": "Bearer " + localStorage.token
         },
         body: JSON.stringify(task)
     }
@@ -47,7 +45,7 @@ async function deleteTask(task) {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + userSession.token
+            "Authorization": "Bearer " + localStorage.token
         },
         body: JSON.stringify(task)
     }

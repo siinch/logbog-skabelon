@@ -86,8 +86,7 @@ class UserSignupForm extends HTMLElement {
                 }
 
                 let data = await response.json();
-                alert("Signed up user: " + JSON.stringify(data))
-                userSession = data;
+                localStorage.setItem("token", data.token);
                 Channel.publish("switch-page", "task-board");
             }
             handleForm();

@@ -27,7 +27,7 @@ async function deleteUser(user) {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + userSession.token
+            "Authorization": "Bearer " + localStorage.token
         },
         body: JSON.stringify(user)
     }

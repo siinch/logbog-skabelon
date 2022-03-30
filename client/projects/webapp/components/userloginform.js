@@ -85,8 +85,7 @@ class UserLoginForm extends HTMLElement {
                 }
 
                 let data = await response.json();
-                alert("Logged in user: " + JSON.stringify(data))
-                userSession = data;
+                localStorage.setItem("token", data.token);
                 Channel.publish("switch-page", "task-board");
             }
             handleForm();
