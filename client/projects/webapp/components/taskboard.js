@@ -34,25 +34,44 @@ class TaskBoard extends HTMLElement {
         
         this.shadowRoot.innerHTML = `
         <style>
-        div {
-            display: inline-block;
+        .outer-wrapper {
+            text-align: center;
             padding: 0 10vw;
+        }
+        .inner-wrapper {
+            display: inline-block;
             height: 70vh;
             width: 100%;
             box-sizing: border-box;
         }
-        #logout, #delete-user{
-            float: right;
+
+        h1 {
+            margin: 0;
+            padding-bottom: 0px;
+            padding-top: 50px;
+        }
+
+        p {
+            padding: 20px;
+            padding-bottom: 50px;
+            padding-top: 0px;
+            color: #aa9dad;
+            display: inline-block;
+        }
+        p:hover {
+            color: #ff9ebc;
         }
         </style>
 
-        <div>
+        <div class="outer-wrapper">
             <h1>Kanban Board</h1>
-            <task-creater></task-creater>
-            <button id="logout">Log out</button>
-            <button id="delete-user">Delete user</button>
+            <p id="logout">Log out</p>
+            <p id="delete-user">Delete user</p>
             <br>
-            ${taskLists}
+            <div class="inner-wrapper">
+                ${taskLists}
+            </div>
+            <br>
         </div>
         `;
 

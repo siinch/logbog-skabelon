@@ -12,6 +12,10 @@ class TaskList extends HTMLElement {
             taskCards += `<task-card task='${task}'></task-card>`;
         }
 
+        let taskCreater = "";
+        if(this.title == "BACKLOG")
+            taskCreater = "<task-creater></task-creater>";
+
         this.shadowRoot.innerHTML = `
         <style>
         * {
@@ -48,6 +52,7 @@ class TaskList extends HTMLElement {
         <div class="outer-wrapper">
         <div class="inner-wrapper">
             <h2>${this.title}</h2>
+            ${taskCreater}
             ${taskCards}
         </div>
         </div>
