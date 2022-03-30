@@ -48,7 +48,7 @@ class UserDeleteForm extends HTMLElement {
             background-color: #181213;
         }
         input[type="submit"]:hover { 
-            background-color: #ffffe1;
+            background-color: red;
             color: black;
         }
         </style>

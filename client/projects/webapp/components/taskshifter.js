@@ -9,9 +9,10 @@ class TaskShifter extends HTMLElement {
     }
 
     render () {
-        let symbol = "&gt";
-        let color = "black";
-        let inactiveColor = "lightgray";
+        let symbol = "&#129094";
+        let color = "#aa9dad";
+        let hoverColor = "#ff9ebc";
+        let inactiveColor = "rgb(100, 100, 100);";
 
         this.onclick = async function() {
             let task = this.task;
@@ -24,15 +25,17 @@ class TaskShifter extends HTMLElement {
         };
 
         if(this.direction == "left")
-            symbol = "&lt";
+            symbol = "&#129092";
 
         if(this.direction == "left" && this.task.state == 0) {
             color = inactiveColor;
+            hoverColor = inactiveColor;
             this.onclick = () => {};
         }
 
         if(this.direction == "right" && this.task.state == 3) {
             color = inactiveColor;
+            hoverColor = inactiveColor;
             this.onclick = () => {}
         }
 
@@ -40,6 +43,13 @@ class TaskShifter extends HTMLElement {
         <style>
             button {
                 color: ${color};
+                font-size: 20px; 
+                background-color: transparent;
+                border: none;
+                float: ${this.direction};
+            }
+            button:hover { 
+                color: ${hoverColor};
             }
         </style>
 

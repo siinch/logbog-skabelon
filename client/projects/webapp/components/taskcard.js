@@ -12,6 +12,10 @@ class TaskCard extends HTMLElement {
         let task = JSON.stringify(this.task);
         this.shadowRoot.innerHTML = `
         <style> 
+        h3 {
+            color: white;
+            margin: 0;
+        }
         .outer-wrapper {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -23,7 +27,7 @@ class TaskCard extends HTMLElement {
         }
         .inner-wrapper {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            background-color: cornflowerblue;
+            background-color: rgb(60, 60, 60);
             padding: 10px;
         }
         </style>

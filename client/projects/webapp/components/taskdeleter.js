@@ -10,10 +10,19 @@ class TaskDeleter extends HTMLElement {
 
     render () {
          this.shadowRoot.innerHTML = `
-        <style> 
+        <style>
+        button {
+            color: #aa9dad;
+            font-size: 20px; 
+            background-color: transparent;
+            border: none;
+        }
+        button:hover { 
+            color: red;
+        }
         </style>
 
-        <button>&#128465</button>
+        <button>&#10006;</button>
         `;
         
         this.onclick = async function() {
