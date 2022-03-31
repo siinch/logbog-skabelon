@@ -63,6 +63,7 @@ class UserDeleteForm extends HTMLElement {
                 <input type="submit" value="DELETE USER">
             </form> 
         </div>
+        <br>
         <p id="back">Go back instead</p>
         </div>
         `;

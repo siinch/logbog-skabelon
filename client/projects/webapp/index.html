@@ -1,19 +1,26 @@
+<!-- This is the one and only HTML-file in the app,
+since it has been built as a single page application (SPA).
+This means instead of linking to new pages, the content is
+dynamically changed via the document object model (DOM) -->
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Meta data about the site, like title, style etc. -->
         <title>Kanban Board</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css"></link>
     </head>
     <body>
+        <!-- Page-switcher is a custom HTML component
+        responsible for controlling which content is viewed
+        on the page. Find the code in the components folder. -->
         <page-switcher></page-switcher>
-        <footer>
-        </footer>
         
-        <script src="scripts/userservice.js"></script>
-        <script src="scripts/taskservice.js"></script>
-        <script src="scripts/channel.js"></script>
+        <!-- Loading all the necessary services and components -->>
+        <script src="services/userservice.js"></script>
+        <script src="services/taskservice.js"></script>
+        <script src="services/channel.js"></script>
         <script src="components/userdeleteform.js"></script>
         <script src="components/pageswitcher.js"></script>
         <script src="components/usersignupform.js"></script>
