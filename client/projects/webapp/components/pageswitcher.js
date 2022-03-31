@@ -1,5 +1,5 @@
 // The main component for switching between other components.
-// Effectively makes the app a single page application (SPA)
+// Effectively makes the app a single page application (SPA).
 class PageSwitcher extends HTMLElement {
 
     constructor () {
