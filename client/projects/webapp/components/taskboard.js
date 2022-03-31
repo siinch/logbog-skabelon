@@ -22,6 +22,13 @@ class TaskBoard extends HTMLElement {
             let data = await response.json();
             TaskBoard.#instance.tasks = data.tasks;
         }
+        else
+        alert(response.status + " " + response.statusText);
+        
+        if(response.status == 401) {
+            localStorage.setItem("token", "");
+            Channel.publish("switch-page", "user-login-form");
+        }
     }
 
     render () {
